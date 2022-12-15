@@ -48,7 +48,6 @@ And here are the plots for the resNext101 model:
 
 ![ResNext_4 Probabilistic F1s_ResNext_4](https://user-images.githubusercontent.com/101527689/207948315-52833c7e-8a36-458c-b8bf-eb2f99ebbbb9.png)
 
-Confusion Matrix:
 ![confusion_matrix_ResNext_5](https://user-images.githubusercontent.com/101527689/207950620-d01bef17-6d27-4ebc-90e8-204eaf713ca6.png)
 
 
