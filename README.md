@@ -3,8 +3,7 @@ A repo for my attempt to win the RSNA Kaggle mammogram screening challenge.
 
 
 
-
-https://user-images.githubusercontent.com/101527689/207952459-76cf82c5-6218-4e64-b0e8-ec4a6b27cd80.mp4
+https://user-images.githubusercontent.com/101527689/207956984-25113ad4-af2d-4054-9406-b4d2175dbd42.mp4
 
 
 
@@ -14,13 +13,13 @@ In this challenge we have about 54000 mamograms from ... patients. Since mamogra
 
 <h2> Methods: </h2>
 
-The first step in developing this pipeline is to perform some preprocessing on the dicom files to make them easier to use in the future. Each dicom file contains some meta-data and an image that can have formats like jpeg, png,... . In addition, these images are quite large (more than 5000*5000) that adds up to a total of 300 Gb of data. My preprocessing includes extracting the image from each dicom file using the pydicom package to a numpy package. Since about half of the imagings have a format called jpeg2000, we need additional packages to preprocess those. These imagings are particularly time-consuming to process and might take 1-2 seconds each. After extracting the images, using the cv2 package I resized them into [512,512] arrays and normalized them to the [0-255] range. Then, I stored these arrays as png files for future use. (Total size of 3.2 Gbs)
+The first step in developing this pipeline is to perform some preprocessing on the dicom files to make them easier to use in the future. Each dicom file contains some meta-data and an image that can have formats like jpeg, png,... . In addition, these images are quite large (more than 5000*5000) that adds up to a total of 300 Gb of data. My preprocessing includes extracting the image from each dicom file using the pydicom package to a numpy package. Since about half of the imagings have a format called jpeg2000, we need additional packages to preprocess those. These imagings are particularly time-consuming to process and might take 1-2 seconds each. After extracting the images, using the cv2 package I resized them into [512,512] arrays and normalized them to the [0-255] range. Then, I stored these arrays as png files for future use. (Total size of 3.2 Gbs) This step took a whole two days.
 
 I also created a list of final transformations to perform on the images before feeding them into the model. Since most of the models I am planning to apply use input size of [224, 224], I resize the images to this size, I will also need to increase the number of channels to meet model input requirements. To do this, for now I just concatenate three of the same image. (For now, I process each image individually, and not at a patient level). I also perform random horizontal flip and normalize the image based on resnet model recommendations. For the validation and test set, I only resize and normalize.
 
 Next step is dividing the dataset into train and validation sets (Final train set is not accessible). Since the dataset is very imbalanced (only 1054 images end up to be cancer, belonging to 464 patients.) For initial training I randomly downsample on the cancer-free patients to twice the number of patients with cancer. Note that I also have to divide the dataset on a patient level rather than imaging level to prevent any dataleak between the two sets. Accounting for the number of patients with cancer, I randomly divide the data into train and validation sets with a 0.8/0.2 ratio. For now, I only use the image as input and whether there was cancer or not as output as a binary classification task.
 
-I used and compared the performance of the following models: resnet18, resnext101 and ViT32. For this transfer learning task, I took each model and removed the final fully connected layer to replace it with another fully connected layer that will have only one output. I used the pretrained weights for each model. I trained each model for 20 epochs and with a momentum of 0.9. I also used dropout and weight decay for all models. I used SGD and reduced the learning rate by multiplying it by 0.8 on each epoch.
+I used and compared the performance of the following models: resnet18 and resnext101. For this transfer learning task, I took each model and removed the final fully connected layer to replace it with another fully connected layer that will have only one output. I used the pretrained weights for each model. I trained each model for 20 epochs and with a momentum of 0.9. I also used dropout and weight decay for all models. I used SGD and reduced the learning rate by multiplying it by 0.8 on each epoch.
 
 <h2> Evaluation </h2>
 
@@ -55,5 +54,13 @@ Confusion Matrix:
 
 
 <h2> Future Directions </h2>
+
+For this project, I quickly ran out of GPU training time in kaggle for this week. I understand that my models need more hyperparameter tuning and more advanced data preprocessing. I am planning to perform the following steps to improve this model:
+
+1. currently, I analyze each mammogram seperatedly. It would be ideal if I could pass all the images from the same breast at once in different channels. However, due to a problem with a lot of missing images I have to perform some cleaning first. After cleaning I am going to put two images with different views of the same breast in the first two channels and put a similar image from the breast of the other side (Usually only one breast is involved so this would provide a good point of comparison) on the third channel. But first, I have to come up with a plan to deal with missing imagings.
+
+2. In this project, I passed the whole mamogram. However, this can be inefficient because sometimes the breast only takes a proportion of the whole image. Someone has already created a labeled dataset for object detection at kaggle. I am going to use that dataset to train my own object detector and only pass that to the model to improve efficacy.
+
+3. The dataset includes some additional information that could be helpful. Forexample, we know which mammograms were selected for biopsy (So they were more likely to have cancer) and also for some, we have risk scoring (BIRADS). If I add those information as outcome to my training, I beleive the performance of the model will increase. especially since the dataset is imbalanced.
 
 
