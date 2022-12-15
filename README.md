@@ -1,5 +1,11 @@
 # KaggleRSNAMamograph
-A repo for my attempt to win the RSNA Kaggle mammogram screening challenge
+A repo for my attempt to win the RSNA Kaggle mammogram screening challenge.
+
+
+
+
+https://user-images.githubusercontent.com/101527689/207952459-76cf82c5-6218-4e64-b0e8-ec4a6b27cd80.mp4
+
 
 
 The RSNA Screening Mammography Breast Cancer Detection <a href = "https://www.kaggle.com/competitions/rsna-breast-cancer-detection/">RSNA Screening Mammography Breast Cancer Detection</a> is a Kaggle challenge sponsored by the Radiology Society of North America. In a nutshell, breast cancer is one of the most prevalent cancers among females. They are so common that women are  advised to perform routine screening using mammographs. Mammographs are X-Ray images (2D images) taken from the breast that can show some of structures, and anomalies (if any) inside the them. However, to be able to look at and interpret one, you need an experienced radiologist which can be really really expensive. Given that all women above some age limit are advised to perform screening one a year, it would be really beneficial if we could have a machine learning model that can take the mammography and provide a risk assessment of how likely it is for the person to have cancer.
