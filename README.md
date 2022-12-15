@@ -20,7 +20,33 @@ I used and compared the performance of the following models: resnet18, resnext10
 
 For my evaluation, I used the prbabilistic F1 score (Same as the criteria in the competition) and accuracy. Since I myself balaned the dataset accuracy is also a relevant outcome measure. I will also provide train, test learning curves for each of the models.
 
+
 <h2> Results</h2>
+
+For the Resnet18 model, after training for 20 epochs here are the learning curves:
+
+![ResNet_1  Train loss_ResNet_1](https://user-images.githubusercontent.com/101527689/207950457-52f9cf3b-3f2e-4ba5-ad52-c28c6bbae093.png)
+![ResNet_1 Net  Test loss_ResNet_1](https://user-images.githubusercontent.com/101527689/207950479-be86f83f-8813-47aa-a027-a34d306456a6.png)
+![ResNet_1 Test accuracy_ResNet_1](https://user-images.githubusercontent.com/101527689/207950500-e806b15a-e7c8-407b-92d9-f3f64e959d00.png)
+![ResNet_1 Probabilistic F1s_ResNet_1](https://user-images.githubusercontent.com/101527689/207950561-65f9e2f7-0129-472c-98ca-4a9c1f761b56.png)
+![confusion_matrix_ResNet_6](https://user-images.githubusercontent.com/101527689/207948878-65f98fc9-0921-445d-9274-6ece202d4641.png)
+
+Here on this model, we reached a pF1 score of 0.36 and an accuracy of 0.57 on the test set. (The current leading team has a pF1 score of 0.55).
+
+And here are the plots for the resNext101 model:
+
+![ResNext_4  Train loss_ResNext_4](https://user-images.githubusercontent.com/101527689/207948236-5fff66ba-3d3b-4de6-8c50-fcd12ca9da20.png)
+
+![ResNext_4  Train Accuracy_ResNext_4](https://user-images.githubusercontent.com/101527689/207948204-abf28e90-20df-4470-bf2a-b7ba81d148da.png)
+
+![ResNext_4 Test accuracy_ResNext_4](https://user-images.githubusercontent.com/101527689/207948287-8ce7d359-4a70-4175-8dfb-395a5cd4d984.png)
+
+![ResNext_4 Probabilistic F1s_ResNext_4](https://user-images.githubusercontent.com/101527689/207948315-52833c7e-8a36-458c-b8bf-eb2f99ebbbb9.png)
+
+Confusion Matrix:
+![confusion_matrix_ResNext_5](https://user-images.githubusercontent.com/101527689/207950620-d01bef17-6d27-4ebc-90e8-204eaf713ca6.png)
+
+
 
 <h2> Future Directions </h2>
 
