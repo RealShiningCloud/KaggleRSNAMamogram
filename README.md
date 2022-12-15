@@ -1,14 +1,8 @@
 # KaggleRSNAMamograph
 A repo for my attempt to win the RSNA Kaggle mammogram screening challenge.
 
- <video width="500px" height="500px"
-        controls="controls"/>
-         
-        <source src="https://user-images.githubusercontent.com/101527689/207956984-25113ad4-af2d-4054-9406-b4d2175dbd42.mp4"
-            type="video/mp4">
- </video>
-
-
+https://user-images.githubusercontent.com/101527689/207956984-25113ad4-af2d-4054-9406-b4d2175dbd42.mp4"
+ 
 The RSNA Screening Mammography Breast Cancer Detection <a href = "https://www.kaggle.com/competitions/rsna-breast-cancer-detection/">RSNA Screening Mammography Breast Cancer Detection</a> is a Kaggle challenge sponsored by the Radiology Society of North America. In a nutshell, breast cancer is one of the most prevalent cancers among females. They are so common that women are advised to perform routine screening using mammography. Mammographs are X-Ray images (2D images) taken from the breast that can show some of the structures, and anomalies (if any) inside them. However, to be able to look at and interpret one, you need an experienced radiologist which can be expensive. Given that all women above some age limit are advised to perform screening once a year, it would be beneficial if we could have a machine learning model that can take the mammography and provide a risk assessment of how likely it is for the person to have cancer.
 
 In this challenge, we have about 54000 mammograms from about 11000 patients. Since mammograms are taken from each breast individually, and with multiple views, each patient will have an average of 4 images. (There are a lot of missing images though). These mammograms are stored in the Dicom format. For all these images, we know if a biopsy was performed and what the outcome was (cancer / no-cancer) for each breast. The final aim of the competition is to get the highest probabilistic F1 score for predicting the chance of having cancer, given the imagings in the test data. In the training data, each row is an image and contains the following information: patient id, image id, age, breast side, imaging view, cancer or no cancer, biopsy or not, and some other information. (More information is available on the competition webpage).
